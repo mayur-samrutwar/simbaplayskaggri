@@ -2,7 +2,7 @@ schema_version = 1
 competition = "kaggriculture"
 team = "astro"
 record_scope = "Public rated episodes only; validation and self-play are excluded."
-last_live_check = "2026-08-19T20:56:10.787638+00:00"
+last_live_check = "2026-08-19T23:01:44.559417+00:00"
 current_rating_leader = 55631403
 established_baseline = 55625688
 
@@ -59,6 +59,14 @@ wins = 13
 losses = 12
 ties = 0
 
+[[submissions.observations]]
+observed_at = "2026-08-19T23:01:48.041481+00:00"
+rating = 662.2
+rated_matches = 25
+wins = 13
+losses = 12
+ties = 0
+
 [[submissions]]
 id = 55625688
 name = "replay-derived-adaptive-hybrid-v2"
@@ -66,14 +74,14 @@ submission_message = "Replay-derived adaptive hybrid v2"
 submitted_at = "2026-08-19T14:39:47.523000+00:00"
 status = "COMPLETE"
 role = "established-baseline"
-current_rating = 793.0
-peak_observed_rating = 795.3
+current_rating = 800.0
+peak_observed_rating = 800.0
 rating_rank = 2
-rated_matches = 29
-wins = 15
-losses = 14
+rated_matches = 32
+wins = 17
+losses = 15
 ties = 0
-win_rate = 0.5172413793103449
+win_rate = 0.53125
 artifact_path = "submissions/artifacts/55625688-upload.tar.gz"
 artifact_sha256 = "d10032fa250a1e980f04dd4d711cf7ae724c1138d8f3a1761bda357529d156a2"
 artifact_bytes = 21392
@@ -123,21 +131,29 @@ wins = 15
 losses = 14
 ties = 0
 
+[[submissions.observations]]
+observed_at = "2026-08-19T23:01:47.116400+00:00"
+rating = 800.0
+rated_matches = 32
+wins = 17
+losses = 15
+ties = 0
+
 [[submissions]]
 id = 55631403
 name = "stable-strawberry-champion-v3"
 submission_message = "Stable strawberry champion v3"
 submitted_at = "2026-08-19T20:31:05.303000+00:00"
 status = "COMPLETE"
-role = "provisional-rating-leader"
-current_rating = 911.3
-peak_observed_rating = 911.3
+role = "current-rating-leader"
+current_rating = 841.7
+peak_observed_rating = 975.0
 rating_rank = 1
-rated_matches = 5
-wins = 4
-losses = 1
+rated_matches = 34
+wins = 19
+losses = 15
 ties = 0
-win_rate = 0.8
+win_rate = 0.5588235294117647
 artifact_path = "submissions/artifacts/55631403-upload.tar.gz"
 artifact_sha256 = "ce0711105c1918c3f5d17312dad34105b4acb954bb542660cf38bb6fb7081695"
 artifact_bytes = 15925
@@ -164,11 +180,11 @@ strategy_details = [
   "Targets 40 strawberries and can scale to 44; also adds demand-triggered tomato and carrot sleeves.",
   "Uses 8 hands, 75 tiles, premium fertilization, batched sales, and final-day liquidation.",
   "Stable layout preserves original empty-board geometry while preventing bought animals from being stranded after target changes.",
-  "Exact uploaded archive retained and byte-identical to the tested dist archive.",
+  "Exact uploaded archive retained as a hash-verified rollback artifact; the current local entry point is a separate unsubmitted candidate.",
 ]
 known_weaknesses = [
-  "The five-match live sample is still small despite leading the three internal ratings.",
-  "It lost to Denis 88,226 to 109,204, showing that stronger diversified farms can still outproduce it.",
+  "The mature 34-match record is only slightly positive and its rating fell from the user-reported 975.0 peak to 841.7.",
+  "Losses averaged 83,059 coins against 102,480, showing that stronger diversified farms outcompound it late.",
   "Large shared strawberry supply remains exposed to price competition.",
 ]
 
@@ -208,42 +224,94 @@ wins = 4
 losses = 1
 ties = 0
 
+[[submissions.observations]]
+observed_at = "user-reported prior live peak on 2026-08-20 IST"
+rating = 975.0
+
+[[submissions.observations]]
+observed_at = "2026-08-19T23:01:44.559417+00:00"
+rating = 841.7
+rated_matches = 34
+wins = 19
+losses = 15
+ties = 0
+
 [[submissions.latest_public_episodes]]
-episode_id = 94649372
-opponent = "Vandana Pathania"
+episode_id = 94688082
+opponent = "ayuma"
 result = "win"
-score = 105654
-opponent_score = 55545
+score = 89982
+opponent_score = 82956
 seat = 1
 
 [[submissions.latest_public_episodes]]
-episode_id = 94651042
-opponent = "Vasilii Buzmakov"
+episode_id = 94689763
+opponent = "Reesh"
 result = "win"
-score = 79962
-opponent_score = 57312
-seat = 1
-
-[[submissions.latest_public_episodes]]
-episode_id = 94652715
-opponent = "ayushk_empire"
-result = "win"
-score = 81861
-opponent_score = 47762
-seat = 1
-
-[[submissions.latest_public_episodes]]
-episode_id = 94654391
-opponent = "Denis"
-result = "loss"
-score = 88226
-opponent_score = 109204
+score = 107694
+opponent_score = 78104
 seat = 0
 
 [[submissions.latest_public_episodes]]
-episode_id = 94656075
-opponent = "F.A.Nina"
+episode_id = 94691457
+opponent = "Hem Viramgama"
 result = "win"
-score = 75250
-opponent_score = 74181
+score = 95834
+opponent_score = 88325
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 94691477
+opponent = "suzy su"
+result = "win"
+score = 52560
+opponent_score = 29645
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 94693148
+opponent = "haruo_tensai"
+result = "win"
+score = 84212
+opponent_score = 77103
+seat = 1
+
+[[submissions.latest_public_episodes]]
+episode_id = 94694830
+opponent = "JASONSLIMWONG"
+result = "loss"
+score = 105780
+opponent_score = 125049
+seat = 1
+
+[[submissions.latest_public_episodes]]
+episode_id = 94696515
+opponent = "Leonid Zaporozhets"
+result = "win"
+score = 76004
+opponent_score = 68078
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 94698198
+opponent = "Lê Khang"
+result = "win"
+score = 71675
+opponent_score = 51745
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 94699879
+opponent = "HandsOffMyBigMelons"
+result = "loss"
+score = 95563
+opponent_score = 100878
+seat = 1
+
+[[submissions.latest_public_episodes]]
+episode_id = 94703343
+opponent = "SatoshiN04"
+result = "win"
+score = 100560
+opponent_score = 93155
 seat = 1

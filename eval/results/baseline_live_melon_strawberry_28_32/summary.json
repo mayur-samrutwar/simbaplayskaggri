@@ -1,7 +1,7 @@
 {
   "created_at": "2026-08-19T20:06:42.748208+00:00",
-  "candidate": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/live_melon_strawberry.py",
-  "opponent": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/live_melon_strawberry.py",
+  "candidate": "candidates/live_melon_strawberry.py",
+  "opponent": "candidates/live_melon_strawberry.py",
   "seeds": [
     28,
     29,

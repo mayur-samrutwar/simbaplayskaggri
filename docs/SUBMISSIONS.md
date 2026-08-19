@@ -5,39 +5,52 @@ source of truth is [`submissions/registry.toml`](../submissions/registry.toml),
 and every artifact below is the **exact file downloaded from the corresponding
 Kaggle submission**, not a later reconstruction.
 
-Last live check: **2026-08-20 02:26 IST**. Ratings are matchmaking ratings and
+Last live check: **2026-08-20 04:31 IST**. Ratings are matchmaking ratings and
 can change whenever another public episode completes.
 
 ## Current ranking
 
 | Rank | Submission | Strategy | Current rating | Public record | Win rate | Role |
 |---:|---:|---|---:|---:|---:|---|
-| 1 | `55631403` | Stable strawberry champion v3 | **911.3** | **4-1-0** | 80.0% | Provisional rating leader |
-| 2 | `55625688` | Replay-derived adaptive hybrid v2 | **793.0** | **15-14-0** | 51.7% | Established baseline |
+| 1 | `55631403` | Stable strawberry champion v3 | **841.7** | **19-15-0** | 55.9% | Current rating leader |
+| 2 | `55625688` | Replay-derived adaptive hybrid v2 | **800.0** | **17-15-0** | 53.1% | Established baseline |
 | 3 | `55623462` | Diversified crop v1 | **662.2** | **13-12-0** | 52.0% | Historical fallback |
 
 The latest bot began at 600, rose through 711.9 and 819.2, dipped to 816.3
-after its first loss, and then climbed to 911.3. It leads the internal rating
-table, but five matches are not enough to retire submission `55625688`; the
-793 bot remains the mature comparison baseline because it has 29 public games.
+after its first loss, reached 911.3 in an API snapshot, and later reached a
+user-observed peak of 975.0. Kaggle's API does not expose historical peaks, so
+the ledger labels that 975.0 value by provenance. After 34 rated games the bot
+stands at 841.7 with a 19-15 record. It still leads the internal rating table,
+but the larger sample confirms that it is a modestly positive incumbent, not a
+leaderboard-level solution. Submission `55625688` remains the exact rollback
+baseline at 800.0 after 32 games.
 
 ## Latest submission episode audit
 
 Validation episode `94647666` completed successfully but is excluded from the
-rated record. All five public episodes returned by Kaggle were counted:
+rated record. The official Kaggle API returned 34 public episodes: 19 wins and
+15 losses. The ten most recent are:
 
 | Episode | Opponent | Result | Astro | Opponent |
 |---:|---|---:|---:|---:|
-| `94649372` | Vandana Pathania | Win | 105,654 | 55,545 |
-| `94651042` | Vasilii Buzmakov | Win | 79,962 | 57,312 |
-| `94652715` | ayushk_empire | Win | 81,861 | 47,762 |
-| `94654391` | Denis | Loss | 88,226 | 109,204 |
-| `94656075` | F.A.Nina | Win | 75,250 | 74,181 |
+| `94688082` | ayuma | Win | 89,982 | 82,956 |
+| `94689763` | Reesh | Win | 107,694 | 78,104 |
+| `94691457` | Hem Viramgama | Win | 95,834 | 88,325 |
+| `94691477` | suzy su | Win | 52,560 | 29,645 |
+| `94693148` | haruo_tensai | Win | 84,212 | 77,103 |
+| `94694830` | JASONSLIMWONG | Loss | 105,780 | 125,049 |
+| `94696515` | Leonid Zaporozhets | Win | 76,004 | 68,078 |
+| `94698198` | Lê Khang | Win | 71,675 | 51,745 |
+| `94699879` | HandsOffMyBigMelons | Loss | 95,563 | 100,878 |
+| `94703343` | SatoshiN04 | Win | 100,560 | 93,155 |
 
-The loss was not a crash or liquidation failure: the bot still produced
-88,226 coins, but Denis produced 109,204. That is evidence that the strawberry
-specialist still needs protection against stronger diversified high-output
-farms.
+Across all 34 games, wins averaged 87,429 coins against 71,388; losses
+averaged 83,059 against 102,480. The incumbent did not crash and ended with no
+sellable products, but it used only 8 hands, averaged 8.47 animals, and spent
+25.4% of requested actions passing. Losing opponents averaged 13.8 animals and
+generated 73,826 late productive coins versus our 54,470. The primary failure
+is late compounding and labor throughput, not final liquidation. See the
+[full 34-match forensic and promotion gate](LIVE_SUBMISSION_55631403.md).
 
 ## Strategy reconstruction record
 
@@ -66,7 +79,7 @@ farms.
 - Crops: residual-value planner based on prices, shops, and visible opponent
   supply; at most 12 new plants per day.
 - Scaling: 75 tiles, 12-hand ceiling, no fourth-land branch, day-29 liquidation.
-- Why it remains useful: a 29-match sample and 793 rating make it the most
+- Why it remains useful: a 32-match sample and 800.0 rating make it the most
   established fallback.
 - Why it stopped climbing: the live audit found an invariant conservative
   opening, too few late strawberries, excessive movement and shed trips, and
@@ -87,8 +100,9 @@ farms.
   strawberry policy, but placed animal coordinates and kinds never shift;
   targets never fall below animals already on the board, in the shed, or
   carried by workers.
-- Current risk: only five live games, one loss to a 109k diversified opponent,
-  and continued exposure to shared strawberry-price competition.
+- Current risk: its 34-game 19-15 record is only modestly positive; low labor
+  and herd ceilings leave it exposed to diversified late compounding and
+  shared strawberry-price competition.
 
 ## Exact rollback artifacts
 

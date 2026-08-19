@@ -178,8 +178,10 @@ def _write_results(output_dir: Path, results: list[MatchResult], summary: dict[s
         writer.writerows(asdict(result) for result in results)
     manifest = {
         "created_at": datetime.now(timezone.utc).isoformat(),
-        "candidate": str(Path(args.candidate).resolve()) if args.candidate not in BUILT_INS else args.candidate,
-        "opponent": str(Path(args.opponent).resolve()) if args.opponent not in BUILT_INS else args.opponent,
+        # Preserve the command-line references instead of embedding a local
+        # machine's absolute workspace path in portable result artifacts.
+        "candidate": args.candidate,
+        "opponent": args.opponent,
         "seeds": parse_seeds(args.seeds),
         "episode_steps": args.episode_steps,
         "workers": args.workers,

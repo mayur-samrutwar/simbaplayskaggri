@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-08-19T22:49:33.855283+00:00",
+  "candidate": "candidates/resilient_portfolio.py",
+  "opponent": "main.py",
+  "seeds": [
+    124,
+    125,
+    126,
+    127
+  ],
+  "episode_steps": 720,
+  "workers": 1,
+  "summary": {
+    "matches": 8,
+    "wins": 8,
+    "losses": 0,
+    "ties": 0,
+    "win_rate": 1.0,
+    "non_loss_rate": 1.0,
+    "mean_candidate_money": 90405.375,
+    "mean_margin": 14067.875,
+    "median_margin": 14987.0,
+    "errors": 0,
+    "mean_ending_shed_units": 0.0,
+    "mean_ending_carried_units": 0.0,
+    "elapsed_seconds": 33.46234074991662
+  }
+}

@@ -1,7 +1,7 @@
 {
   "created_at": "2026-08-19T20:11:44.340932+00:00",
-  "candidate": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/adaptive_archetype.py",
-  "opponent": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/live_milk.py",
+  "candidate": "candidates/adaptive_archetype.py",
+  "opponent": "candidates/live_milk.py",
   "seeds": [
     28,
     29,

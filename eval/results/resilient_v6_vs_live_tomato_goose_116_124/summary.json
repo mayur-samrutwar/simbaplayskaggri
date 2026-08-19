@@ -1,0 +1,32 @@
+{
+  "created_at": "2026-08-19T22:34:34.435219+00:00",
+  "candidate": "candidates/resilient_portfolio.py",
+  "opponent": "candidates/live_tomato_goose.py",
+  "seeds": [
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123
+  ],
+  "episode_steps": 720,
+  "workers": 1,
+  "summary": {
+    "matches": 16,
+    "wins": 13,
+    "losses": 3,
+    "ties": 0,
+    "win_rate": 0.8125,
+    "non_loss_rate": 0.8125,
+    "mean_candidate_money": 88730.375,
+    "mean_margin": 8633.25,
+    "median_margin": 7467.0,
+    "errors": 0,
+    "mean_ending_shed_units": 0.0,
+    "mean_ending_carried_units": 0.0,
+    "elapsed_seconds": 64.4407374978764
+  }
+}

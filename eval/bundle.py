@@ -14,8 +14,7 @@ BUNDLE_FILES = (
     Path("main.py"),
     Path("candidates/__init__.py"),
     Path("candidates/live_archetypes.py"),
-    Path("candidates/adaptive_archetype.py"),
-    Path("candidates/champion_strawberry.py"),
+    Path("candidates/resilient_portfolio.py"),
 )
 
 

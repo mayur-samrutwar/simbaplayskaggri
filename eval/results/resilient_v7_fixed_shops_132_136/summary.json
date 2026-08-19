@@ -1,0 +1,248 @@
+{
+  "candidate": "candidates/resilient_portfolio.py",
+  "candidate_sha256": "5a348906aaf56612e15114fb48d6cadb03e467c3ecdc853e909640fe98a58f3f",
+  "opponent": "main.py",
+  "seeds": [
+    132,
+    133,
+    134,
+    135
+  ],
+  "paired_seats": true,
+  "episode_steps": 720,
+  "summary": {
+    "scenarios": 7,
+    "matches": 56,
+    "wins": 41,
+    "losses": 15,
+    "ties": 0,
+    "mean_candidate_money": 80741.19642857143,
+    "mean_opponent_money": 66179.17857142857,
+    "mean_margin": 14562.017857142857,
+    "errors": 0
+  },
+  "results": [
+    {
+      "scenario": "no_shops",
+      "shops": [],
+      "matches": 8,
+      "wins": 8,
+      "losses": 0,
+      "ties": 0,
+      "mean_candidate_money": 31028.0,
+      "mean_opponent_money": 21083.0,
+      "mean_margin": 9945.0,
+      "median_margin": 9444.0,
+      "min_margin": 9442.0,
+      "max_margin": 11206.0,
+      "seat_0": {
+        "wins": 4,
+        "mean_candidate_money": 31070.25,
+        "mean_margin": 10007.0
+      },
+      "seat_1": {
+        "wins": 4,
+        "mean_candidate_money": 30985.75,
+        "mean_margin": 9883.0
+      }
+    },
+    {
+      "scenario": "balanced_unique",
+      "shops": [
+        "BAKERY",
+        "PIZZA_SHOP",
+        "BRUNCH_SPOT",
+        "YARN_STORE",
+        "ICE_CREAM_SHOP",
+        "PET_CAFE",
+        "SMOOTHIE_SHOP",
+        "FARMERS_MARKET"
+      ],
+      "matches": 8,
+      "wins": 0,
+      "losses": 8,
+      "ties": 0,
+      "mean_candidate_money": 88832.125,
+      "mean_opponent_money": 89633.5,
+      "mean_margin": -801.375,
+      "median_margin": -359.0,
+      "min_margin": -2080.0,
+      "max_margin": -118.0,
+      "seat_0": {
+        "wins": 0,
+        "mean_candidate_money": 88870.5,
+        "mean_margin": -913.0
+      },
+      "seat_1": {
+        "wins": 0,
+        "mean_candidate_money": 88793.75,
+        "mean_margin": -689.75
+      }
+    },
+    {
+      "scenario": "wool",
+      "shops": [
+        "YARN_STORE",
+        "YARN_STORE",
+        "YARN_STORE",
+        "YARN_STORE",
+        "YARN_STORE",
+        "YARN_STORE",
+        "YARN_STORE",
+        "YARN_STORE"
+      ],
+      "matches": 8,
+      "wins": 8,
+      "losses": 0,
+      "ties": 0,
+      "mean_candidate_money": 80517.0,
+      "mean_opponent_money": 55640.25,
+      "mean_margin": 24876.75,
+      "median_margin": 25900.5,
+      "min_margin": 21787.0,
+      "max_margin": 26096.0,
+      "seat_0": {
+        "wins": 4,
+        "mean_candidate_money": 80488.75,
+        "mean_margin": 24770.75
+      },
+      "seat_1": {
+        "wins": 4,
+        "mean_candidate_money": 80545.25,
+        "mean_margin": 24982.75
+      }
+    },
+    {
+      "scenario": "egg_wheat",
+      "shops": [
+        "BAKERY",
+        "BRUNCH_SPOT",
+        "BAKERY",
+        "BRUNCH_SPOT",
+        "BAKERY",
+        "BRUNCH_SPOT",
+        "BAKERY",
+        "BRUNCH_SPOT"
+      ],
+      "matches": 8,
+      "wins": 8,
+      "losses": 0,
+      "ties": 0,
+      "mean_candidate_money": 71419.875,
+      "mean_opponent_money": 56101.5,
+      "mean_margin": 15318.375,
+      "median_margin": 15399.0,
+      "min_margin": 14534.0,
+      "max_margin": 16089.0,
+      "seat_0": {
+        "wins": 4,
+        "mean_candidate_money": 71380.75,
+        "mean_margin": 15331.0
+      },
+      "seat_1": {
+        "wins": 4,
+        "mean_candidate_money": 71459.0,
+        "mean_margin": 15305.75
+      }
+    },
+    {
+      "scenario": "milk_berry",
+      "shops": [
+        "ICE_CREAM_SHOP",
+        "SMOOTHIE_SHOP",
+        "PIZZA_SHOP",
+        "ICE_CREAM_SHOP",
+        "SMOOTHIE_SHOP",
+        "PIZZA_SHOP",
+        "ICE_CREAM_SHOP",
+        "SMOOTHIE_SHOP"
+      ],
+      "matches": 8,
+      "wins": 8,
+      "losses": 0,
+      "ties": 0,
+      "mean_candidate_money": 130358.125,
+      "mean_opponent_money": 117837.0,
+      "mean_margin": 12521.125,
+      "median_margin": 13417.0,
+      "min_margin": 9599.0,
+      "max_margin": 15345.0,
+      "seat_0": {
+        "wins": 4,
+        "mean_candidate_money": 130442.25,
+        "mean_margin": 12383.5
+      },
+      "seat_1": {
+        "wins": 4,
+        "mean_candidate_money": 130274.0,
+        "mean_margin": 12658.75
+      }
+    },
+    {
+      "scenario": "crop_market",
+      "shops": [
+        "FARMERS_MARKET",
+        "FARMERS_MARKET",
+        "FARMERS_MARKET",
+        "FARMERS_MARKET",
+        "FARMERS_MARKET",
+        "FARMERS_MARKET",
+        "FARMERS_MARKET",
+        "FARMERS_MARKET"
+      ],
+      "matches": 8,
+      "wins": 1,
+      "losses": 7,
+      "ties": 0,
+      "mean_candidate_money": 80128.0,
+      "mean_opponent_money": 81439.25,
+      "mean_margin": -1311.25,
+      "median_margin": -2087.0,
+      "min_margin": -2087.0,
+      "max_margin": 2408.0,
+      "seat_0": {
+        "wins": 1,
+        "mean_candidate_money": 80067.25,
+        "mean_margin": -957.5
+      },
+      "seat_1": {
+        "wins": 0,
+        "mean_candidate_money": 80188.75,
+        "mean_margin": -1665.0
+      }
+    },
+    {
+      "scenario": "carrot",
+      "shops": [
+        "PET_CAFE",
+        "PET_CAFE",
+        "PET_CAFE",
+        "PET_CAFE",
+        "PET_CAFE",
+        "PET_CAFE",
+        "PET_CAFE",
+        "PET_CAFE"
+      ],
+      "matches": 8,
+      "wins": 8,
+      "losses": 0,
+      "ties": 0,
+      "mean_candidate_money": 82905.25,
+      "mean_opponent_money": 41519.75,
+      "mean_margin": 41385.5,
+      "median_margin": 40888.0,
+      "min_margin": 37582.0,
+      "max_margin": 47885.0,
+      "seat_0": {
+        "wins": 4,
+        "mean_candidate_money": 83311.5,
+        "mean_margin": 42495.75
+      },
+      "seat_1": {
+        "wins": 4,
+        "mean_candidate_money": 82499.0,
+        "mean_margin": 40275.25
+      }
+    }
+  ]
+}

@@ -11,6 +11,7 @@ runs/
 replays/
 dist/
 *.replay.json
+eval/results/**/*-inspection.json
 
 # Downloaded archive; extracted official references are kept.
 competition/kaggriculture.zip
