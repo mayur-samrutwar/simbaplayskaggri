@@ -1,0 +1,249 @@
+schema_version = 1
+competition = "kaggriculture"
+team = "astro"
+record_scope = "Public rated episodes only; validation and self-play are excluded."
+last_live_check = "2026-08-19T20:56:10.787638+00:00"
+current_rating_leader = 55631403
+established_baseline = 55625688
+
+[[submissions]]
+id = 55623462
+name = "diversified-crop-v1"
+submission_message = "simba plays kaggri"
+submitted_at = "2026-08-19T12:38:21.990000+00:00"
+status = "COMPLETE"
+role = "historical-fallback"
+current_rating = 662.2
+peak_observed_rating = 662.2
+rating_rank = 3
+rated_matches = 25
+wins = 13
+losses = 12
+ties = 0
+win_rate = 0.52
+artifact_path = "submissions/artifacts/55623462-upload.tar.gz"
+artifact_sha256 = "1d1d6391a0829f9cde6fd451eef9e00ca88ae84ff65352497784bad59a453853"
+artifact_bytes = 8072
+rollback_fidelity = "byte-exact-kaggle-upload"
+entrypoint = "candidates.crop:agent"
+bundle_files = [
+  "main.py",
+  "candidates/__init__.py",
+  "candidates/crop.py",
+]
+strategy_summary = """
+Crop-only diversified policy. It opens the 25-tile northwest field with 16
+melons and 9 wheat, hires 7 hands, then chooses later crops from marginal
+post-glut value using live market inventory, town demand, pending inventory,
+and visible opponent production. It expands only after wealth thresholds and
+liquidates all sellable inventory on day 29.
+"""
+strategy_details = [
+  "No livestock; all capacity and labor are devoted to crops.",
+  "The 16-melon/9-wheat opener replaced the fragile 25-melon monoculture.",
+  "Later allocations may use wheat, carrot, tomato, strawberry, or melon according to expected marginal return.",
+  "Seven hands on 25 tiles, eight on 50, and ten on larger farms.",
+  "Exact uploaded archive retained; local source reproduces cached public actions for all 720 steps.",
+]
+known_weaknesses = [
+  "No recurring animal or fertilizer income.",
+  "Large hybrid opponents can compound more strongly after day 20.",
+  "Premium-crop mirrors can depress shared prices sharply.",
+]
+
+[[submissions.observations]]
+observed_at = "2026-08-19T20:49:49.749117+00:00"
+rating = 662.2
+rated_matches = 25
+wins = 13
+losses = 12
+ties = 0
+
+[[submissions]]
+id = 55625688
+name = "replay-derived-adaptive-hybrid-v2"
+submission_message = "Replay-derived adaptive hybrid v2"
+submitted_at = "2026-08-19T14:39:47.523000+00:00"
+status = "COMPLETE"
+role = "established-baseline"
+current_rating = 793.0
+peak_observed_rating = 795.3
+rating_rank = 2
+rated_matches = 29
+wins = 15
+losses = 14
+ties = 0
+win_rate = 0.5172413793103449
+artifact_path = "submissions/artifacts/55625688-upload.tar.gz"
+artifact_sha256 = "d10032fa250a1e980f04dd4d711cf7ae724c1138d8f3a1761bda357529d156a2"
+artifact_bytes = 21392
+rollback_fidelity = "byte-exact-kaggle-upload"
+entrypoint = "candidates.hybrid:agent"
+bundle_files = [
+  "main.py",
+  "candidates/__init__.py",
+  "candidates/crop.py",
+  "candidates/livestock.py",
+  "candidates/hybrid_core.py",
+  "candidates/hybrid.py",
+]
+strategy_summary = """
+Replay-derived adaptive crop/livestock hybrid. It opens with 2 cows, 3 sheep,
+3 strawberry seeds, 10 wheat seeds, 5 bought wheat, and 5 hires. The animal
+portfolio follows shop demand with a 15-animal cap; the crop layer estimates
+residual value from prices, shops, and visible opponent supply. It targets 75
+tiles and caps labor at 12 hands.
+"""
+strategy_details = [
+  "Opening animals: 0 goose, 2 cows, 3 sheep; opening feed: 5 wheat.",
+  "Opening crops: 3 strawberry and 10 wheat; no opening melon cohort.",
+  "Tetsuya-style animal mode: up to 3 geese, 12 cows, and 10 sheep, with 15 animals total.",
+  "Residual crop mode, at most 12 new plants per day, 75 tiles, and no fourth land purchase.",
+  "Exact uploaded archive retained; local source reproduces public actions for all 720 steps.",
+]
+known_weaknesses = [
+  "The invariant no-melon opening often leads early but lacks the winners' day-20-to-29 crop compounding.",
+  "Live losses averaged too few strawberry plants and excessive movement/drop trips.",
+  "The mature live record is near even, so this is a dependable fallback rather than a leaderboard-winning policy.",
+]
+
+[[submissions.observations]]
+observed_at = "2026-08-20 audit"
+rating = 795.3
+rated_matches = 27
+wins = 14
+losses = 13
+ties = 0
+
+[[submissions.observations]]
+observed_at = "2026-08-19T20:51:12.595631+00:00"
+rating = 793.0
+rated_matches = 29
+wins = 15
+losses = 14
+ties = 0
+
+[[submissions]]
+id = 55631403
+name = "stable-strawberry-champion-v3"
+submission_message = "Stable strawberry champion v3"
+submitted_at = "2026-08-19T20:31:05.303000+00:00"
+status = "COMPLETE"
+role = "provisional-rating-leader"
+current_rating = 911.3
+peak_observed_rating = 911.3
+rating_rank = 1
+rated_matches = 5
+wins = 4
+losses = 1
+ties = 0
+win_rate = 0.8
+artifact_path = "submissions/artifacts/55631403-upload.tar.gz"
+artifact_sha256 = "ce0711105c1918c3f5d17312dad34105b4acb954bb542660cf38bb6fb7081695"
+artifact_bytes = 15925
+rollback_fidelity = "byte-exact-kaggle-upload"
+entrypoint = "candidates.champion_strawberry:agent"
+bundle_files = [
+  "main.py",
+  "candidates/__init__.py",
+  "candidates/live_archetypes.py",
+  "candidates/adaptive_archetype.py",
+  "candidates/champion_strawberry.py",
+]
+strategy_summary = """
+High-output strawberry specialist with an 8-melon/8-wheat liquidity opening,
+1 cow, 2 sheep, 8 hands, and a 75-tile target. It grows toward a baseline of 4
+cows, 3 sheep, and 40 strawberries while adapting cows, sheep, tomatoes,
+carrots, and premium-crop volume to unlocked shops. The champion preserves the
+proven scheduler but makes occupied animal coordinates immutable and never
+lets a target fall below animals already placed, shed, or carried.
+"""
+strategy_details = [
+  "Opening animals: 0 goose, 1 cow, 2 sheep; opening crops: 8 melon and 8 wheat.",
+  "Baseline herd: 4 cows and 3 sheep; shop demand can scale cows to 9 and sheep to 8 within a 15-animal cap.",
+  "Targets 40 strawberries and can scale to 44; also adds demand-triggered tomato and carrot sleeves.",
+  "Uses 8 hands, 75 tiles, premium fertilization, batched sales, and final-day liquidation.",
+  "Stable layout preserves original empty-board geometry while preventing bought animals from being stranded after target changes.",
+  "Exact uploaded archive retained and byte-identical to the tested dist archive.",
+]
+known_weaknesses = [
+  "The five-match live sample is still small despite leading the three internal ratings.",
+  "It lost to Denis 88,226 to 109,204, showing that stronger diversified farms can still outproduce it.",
+  "Large shared strawberry supply remains exposed to price competition.",
+]
+
+[[submissions.observations]]
+observed_at = "immediately after acceptance"
+rating = 600.0
+rated_matches = 0
+wins = 0
+losses = 0
+ties = 0
+
+[[submissions.observations]]
+observed_at = "intermediate live check"
+rating = 711.9
+
+[[submissions.observations]]
+observed_at = "2026-08-19T20:44 live check"
+rating = 819.2
+rated_matches = 2
+wins = 2
+losses = 0
+ties = 0
+
+[[submissions.observations]]
+observed_at = "2026-08-19T20:51:32.560354+00:00"
+rating = 816.3
+rated_matches = 4
+wins = 3
+losses = 1
+ties = 0
+
+[[submissions.observations]]
+observed_at = "2026-08-19T20:56:10.787638+00:00"
+rating = 911.3
+rated_matches = 5
+wins = 4
+losses = 1
+ties = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 94649372
+opponent = "Vandana Pathania"
+result = "win"
+score = 105654
+opponent_score = 55545
+seat = 1
+
+[[submissions.latest_public_episodes]]
+episode_id = 94651042
+opponent = "Vasilii Buzmakov"
+result = "win"
+score = 79962
+opponent_score = 57312
+seat = 1
+
+[[submissions.latest_public_episodes]]
+episode_id = 94652715
+opponent = "ayushk_empire"
+result = "win"
+score = 81861
+opponent_score = 47762
+seat = 1
+
+[[submissions.latest_public_episodes]]
+episode_id = 94654391
+opponent = "Denis"
+result = "loss"
+score = 88226
+opponent_score = 109204
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 94656075
+opponent = "F.A.Nina"
+result = "win"
+score = 75250
+opponent_score = 74181
+seat = 1

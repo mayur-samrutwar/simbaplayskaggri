@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-08-19T20:20:49.302915+00:00",
+  "candidate": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/adaptive_archetype.py",
+  "opponent": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/live_melon_strawberry.py",
+  "seeds": [
+    32,
+    33,
+    34,
+    35
+  ],
+  "episode_steps": 720,
+  "workers": 1,
+  "summary": {
+    "matches": 8,
+    "wins": 6,
+    "losses": 2,
+    "ties": 0,
+    "win_rate": 0.75,
+    "non_loss_rate": 0.75,
+    "mean_candidate_money": 96609.375,
+    "mean_margin": 755.75,
+    "median_margin": 532.0,
+    "errors": 0,
+    "mean_ending_shed_units": 0.0,
+    "mean_ending_carried_units": 0.0,
+    "elapsed_seconds": 31.93602787499549
+  }
+}

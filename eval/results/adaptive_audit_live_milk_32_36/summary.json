@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-08-19T20:20:05.344107+00:00",
+  "candidate": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/adaptive_archetype.py",
+  "opponent": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/live_milk.py",
+  "seeds": [
+    32,
+    33,
+    34,
+    35
+  ],
+  "episode_steps": 720,
+  "workers": 1,
+  "summary": {
+    "matches": 8,
+    "wins": 8,
+    "losses": 0,
+    "ties": 0,
+    "win_rate": 1.0,
+    "non_loss_rate": 1.0,
+    "mean_candidate_money": 92041.5,
+    "mean_margin": 12366.75,
+    "median_margin": 10861.0,
+    "errors": 0,
+    "mean_ending_shed_units": 0.0,
+    "mean_ending_carried_units": 0.0,
+    "elapsed_seconds": 29.657617459073663
+  }
+}

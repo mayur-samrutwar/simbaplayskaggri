@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-08-19T20:06:43.843434+00:00",
+  "candidate": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/live_melon_strawberry.py",
+  "opponent": "/Users/tonystark/Documents/ChatGPT/simbaplayskaggri/candidates/live_milk.py",
+  "seeds": [
+    28,
+    29,
+    30,
+    31
+  ],
+  "episode_steps": 720,
+  "workers": 1,
+  "summary": {
+    "matches": 8,
+    "wins": 1,
+    "losses": 7,
+    "ties": 0,
+    "win_rate": 0.125,
+    "non_loss_rate": 0.125,
+    "mean_candidate_money": 78574.5,
+    "mean_margin": -3437.0,
+    "median_margin": -3791.5,
+    "errors": 0,
+    "mean_ending_shed_units": 0.0,
+    "mean_ending_carried_units": 0.0,
+    "elapsed_seconds": 31.928132708009798
+  }
+}

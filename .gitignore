@@ -1,0 +1,22 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local evaluation artifacts
+runs/
+replays/
+dist/
+*.replay.json
+
+# Downloaded archive; extracted official references are kept.
+competition/kaggriculture.zip
+
+# Secrets must never enter the repository.
+.env
+.env.*
+access_token
+kaggle.json
