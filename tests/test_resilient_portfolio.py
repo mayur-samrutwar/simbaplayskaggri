@@ -7,6 +7,7 @@ import pytest
 from kaggle_environments import make
 
 from candidates import resilient_portfolio as resilient
+from candidates import throughput_portfolio as throughput
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -402,3 +403,60 @@ def test_full_season_completes_and_liquidates_every_location(full_season_state):
         for row in farm["tiles"]
         for tile in row
     )
+
+
+def test_throughput_herd_scales_with_relevant_shops_not_crop_only_shops():
+    crop_only = throughput._animal_goals(
+        _obs(day=12, shops=("PET_CAFE", "FARMERS_MARKET") * 2)
+    )
+    wool = throughput._animal_goals(_obs(day=12, shops=("YARN_STORE",) * 4))
+    egg = throughput._animal_goals(_obs(day=12, shops=("BAKERY",) * 4))
+
+    assert sum(crop_only.values()) == 8
+    assert crop_only["GOOSE"] == 0
+    assert sum(wool.values()) == 16
+    assert sum(egg.values()) == 16
+    assert wool["SHEEP"] > crop_only["SHEEP"]
+    assert egg["GOOSE"] > 0
+
+
+def test_throughput_engine_does_not_collapse_against_rival_supply():
+    obs = _obs(day=12, shops=("YARN_STORE",) * 4)
+    _place(obs["farms"][1], _animal("SHEEP"), 14)
+
+    assert sum(throughput._animal_goals(obs).values()) == 16
+
+
+def test_throughput_prioritizes_paid_premium_seed_near_deadline():
+    farm = _farm()
+    obs = _obs(
+        day=14,
+        shops=("SMOOTHIE_SHOP",),
+        farm=farm,
+        seeds={"STRAWBERRY": 6},
+    )
+    goals = throughput._animal_goals(obs)
+    tasks = throughput._crop_tasks(obs, farm, throughput.POLICY, goals, set())
+
+    berry_priorities = [
+        priority
+        for priority, _target, operation in tasks
+        if operation[:2] == ["PLANT", "STRAWBERRY"]
+    ]
+    assert berry_priorities
+    assert set(berry_priorities) == {-1}
+
+
+def test_throughput_full_season_finishes_without_inventory():
+    env = make(
+        "kaggriculture",
+        configuration={"episodeSteps": 720, "seed": 197},
+        debug=True,
+    )
+    env.run([str(ROOT / "candidates" / "throughput_portfolio.py"), "pass"])
+    final = env.steps[-1][0]
+
+    assert final.status == "DONE"
+    assert sum(final.observation.private["shed"].values()) == 0
+    assert sum(final.observation.private["seeds"].values()) == 0
+    assert not any(final.observation.private["inventories"])

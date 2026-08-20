@@ -15,6 +15,7 @@ BUNDLE_FILES = (
     Path("candidates/__init__.py"),
     Path("candidates/live_archetypes.py"),
     Path("candidates/resilient_portfolio.py"),
+    Path("candidates/throughput_portfolio.py"),
 )
 
 

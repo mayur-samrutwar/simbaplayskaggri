@@ -5,52 +5,47 @@ source of truth is [`submissions/registry.toml`](../submissions/registry.toml),
 and every artifact below is the **exact file downloaded from the corresponding
 Kaggle submission**, not a later reconstruction.
 
-Last live check: **2026-08-20 04:31 IST**. Ratings are matchmaking ratings and
+Last live check: **2026-08-21 01:19 IST**. Ratings are matchmaking ratings and
 can change whenever another public episode completes.
 
 ## Current ranking
 
 | Rank | Submission | Strategy | Current rating | Public record | Win rate | Role |
 |---:|---:|---|---:|---:|---:|---|
-| 1 | `55631403` | Stable strawberry champion v3 | **841.7** | **19-15-0** | 55.9% | Current rating leader |
-| 2 | `55625688` | Replay-derived adaptive hybrid v2 | **800.0** | **17-15-0** | 53.1% | Established baseline |
+| 1 | `55631403` | Stable strawberry champion v3 | **818.9** | **24-26-0** | 48.0% | Current rating leader |
+| 2 | `55625688` | Replay-derived adaptive hybrid v2 | **776.6** | **17-15-0** | 53.1% | Established baseline |
 | 3 | `55623462` | Diversified crop v1 | **662.2** | **13-12-0** | 52.0% | Historical fallback |
 
 The latest bot began at 600, rose through 711.9 and 819.2, dipped to 816.3
 after its first loss, reached 911.3 in an API snapshot, and later reached a
 user-observed peak of 975.0. Kaggle's API does not expose historical peaks, so
-the ledger labels that 975.0 value by provenance. After 34 rated games the bot
-stands at 841.7 with a 19-15 record. It still leads the internal rating table,
-but the larger sample confirms that it is a modestly positive incumbent, not a
-leaderboard-level solution. Submission `55625688` remains the exact rollback
-baseline at 800.0 after 32 games.
+the ledger labels that value by provenance. After 50 rated games the bot is at
+818.9 with a 24-26 record. Submission `55625688` remains the exact rollback
+baseline, currently rated 776.6 after 32 games.
 
 ## Latest submission episode audit
 
-Validation episode `94647666` completed successfully but is excluded from the
-rated record. The official Kaggle API returned 34 public episodes: 19 wins and
-15 losses. The ten most recent are:
+Validation episode `94647666` is excluded. The API returned 50 rated episodes:
+24 wins and 26 losses. The ten most recent are:
 
 | Episode | Opponent | Result | Astro | Opponent |
 |---:|---|---:|---:|---:|
-| `94688082` | ayuma | Win | 89,982 | 82,956 |
-| `94689763` | Reesh | Win | 107,694 | 78,104 |
-| `94691457` | Hem Viramgama | Win | 95,834 | 88,325 |
-| `94691477` | suzy su | Win | 52,560 | 29,645 |
-| `94693148` | haruo_tensai | Win | 84,212 | 77,103 |
-| `94694830` | JASONSLIMWONG | Loss | 105,780 | 125,049 |
-| `94696515` | Leonid Zaporozhets | Win | 76,004 | 68,078 |
-| `94698198` | Lê Khang | Win | 71,675 | 51,745 |
-| `94699879` | HandsOffMyBigMelons | Loss | 95,563 | 100,878 |
-| `94703343` | SatoshiN04 | Win | 100,560 | 93,155 |
+| `95390646` | なーでぃー牧場 | Win | 60,032 | 59,462 |
+| `95326461` | Aleksei Churashev | Loss | 65,390 | 104,613 |
+| `95287634` | counter puncher | Loss | 69,428 | 104,663 |
+| `95276498` | Marcin Skalski | Win | 112,181 | 89,853 |
+| `95269355` | lulzx | Loss | 56,293 | 84,097 |
+| `95214675` | Athenix Kaggriculture | Loss | 86,981 | 103,803 |
+| `95177974` | Lissandra Kruse Fuganti | Win | 78,979 | 78,792 |
+| `95173430` | YWehbe | Loss | 81,780 | 115,264 |
+| `95068636` | LUCKY2 | Loss | 91,488 | 105,836 |
+| `95034456` | Rohan Jain | Loss | 87,769 | 96,884 |
 
-Across all 34 games, wins averaged 87,429 coins against 71,388; losses
-averaged 83,059 against 102,480. The incumbent did not crash and ended with no
-sellable products, but it used only 8 hands, averaged 8.47 animals, and spent
-25.4% of requested actions passing. Losing opponents averaged 13.8 animals and
-generated 73,826 late productive coins versus our 54,470. The primary failure
-is late compounding and labor throughput, not final liquidation. See the
-[full 34-match forensic and promotion gate](LIVE_SUBMISSION_55631403.md).
+The latest 16-game slice went 5-11. Losses averaged 71,862 coins against
+103,328. The decisive gap emerged after day 18: winners fielded roughly
+12-15 animals, used 12-14 hands, and compounded animal, fertilizer, repeat
+melon, and late wheat revenue. Our bot averaged 25.97% passing and remained
+economically conservative; it did not crash or fail liquidation.
 
 ## Strategy reconstruction record
 
@@ -79,7 +74,7 @@ is late compounding and labor throughput, not final liquidation. See the
 - Crops: residual-value planner based on prices, shops, and visible opponent
   supply; at most 12 new plants per day.
 - Scaling: 75 tiles, 12-hand ceiling, no fourth-land branch, day-29 liquidation.
-- Why it remains useful: a 32-match sample and 800.0 rating make it the most
+- Why it remains useful: a 32-match sample and exact archive make it the most
   established fallback.
 - Why it stopped climbing: the live audit found an invariant conservative
   opening, too few late strawberries, excessive movement and shed trips, and
@@ -100,7 +95,7 @@ is late compounding and labor throughput, not final liquidation. See the
   strawberry policy, but placed animal coordinates and kinds never shift;
   targets never fall below animals already on the board, in the shed, or
   carried by workers.
-- Current risk: its 34-game 19-15 record is only modestly positive; low labor
+- Current risk: its 50-game 24-26 record is negative; low labor
   and herd ceilings leave it exposed to diversified late compounding and
   shared strawberry-price competition.
 

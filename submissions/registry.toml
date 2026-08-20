@@ -2,7 +2,7 @@ schema_version = 1
 competition = "kaggriculture"
 team = "astro"
 record_scope = "Public rated episodes only; validation and self-play are excluded."
-last_live_check = "2026-08-19T23:01:44.559417+00:00"
+last_live_check = "2026-08-20T19:49:34+00:00"
 current_rating_leader = 55631403
 established_baseline = 55625688
 
@@ -74,7 +74,7 @@ submission_message = "Replay-derived adaptive hybrid v2"
 submitted_at = "2026-08-19T14:39:47.523000+00:00"
 status = "COMPLETE"
 role = "established-baseline"
-current_rating = 800.0
+current_rating = 776.6
 peak_observed_rating = 800.0
 rating_rank = 2
 rated_matches = 32
@@ -139,6 +139,14 @@ wins = 17
 losses = 15
 ties = 0
 
+[[submissions.observations]]
+observed_at = "2026-08-20T19:49:34+00:00"
+rating = 776.6
+rated_matches = 32
+wins = 17
+losses = 15
+ties = 0
+
 [[submissions]]
 id = 55631403
 name = "stable-strawberry-champion-v3"
@@ -146,14 +154,14 @@ submission_message = "Stable strawberry champion v3"
 submitted_at = "2026-08-19T20:31:05.303000+00:00"
 status = "COMPLETE"
 role = "current-rating-leader"
-current_rating = 841.7
+current_rating = 818.9
 peak_observed_rating = 975.0
 rating_rank = 1
-rated_matches = 34
-wins = 19
-losses = 15
+rated_matches = 50
+wins = 24
+losses = 26
 ties = 0
-win_rate = 0.5588235294117647
+win_rate = 0.48
 artifact_path = "submissions/artifacts/55631403-upload.tar.gz"
 artifact_sha256 = "ce0711105c1918c3f5d17312dad34105b4acb954bb542660cf38bb6fb7081695"
 artifact_bytes = 15925
@@ -183,8 +191,8 @@ strategy_details = [
   "Exact uploaded archive retained as a hash-verified rollback artifact; the current local entry point is a separate unsubmitted candidate.",
 ]
 known_weaknesses = [
-  "The mature 34-match record is only slightly positive and its rating fell from the user-reported 975.0 peak to 841.7.",
-  "Losses averaged 83,059 coins against 102,480, showing that stronger diversified farms outcompound it late.",
+  "The 50-match record is negative and its rating fell from the user-reported 975.0 peak to 818.9.",
+  "Recent losses show stronger diversified farms outcompound it from day 18 onward.",
   "Large shared strawberry supply remains exposed to price competition.",
 ]
 
@@ -236,82 +244,90 @@ wins = 19
 losses = 15
 ties = 0
 
-[[submissions.latest_public_episodes]]
-episode_id = 94688082
-opponent = "ayuma"
-result = "win"
-score = 89982
-opponent_score = 82956
-seat = 1
+[[submissions.observations]]
+observed_at = "2026-08-20T19:49:34+00:00"
+rating = 818.9
+rated_matches = 50
+wins = 24
+losses = 26
+ties = 0
 
 [[submissions.latest_public_episodes]]
-episode_id = 94689763
-opponent = "Reesh"
+episode_id = 95390646
+opponent = "なーでぃー牧場"
 result = "win"
-score = 107694
-opponent_score = 78104
+score = 60032
+opponent_score = 59462
 seat = 0
 
 [[submissions.latest_public_episodes]]
-episode_id = 94691457
-opponent = "Hem Viramgama"
-result = "win"
-score = 95834
-opponent_score = 88325
-seat = 0
-
-[[submissions.latest_public_episodes]]
-episode_id = 94691477
-opponent = "suzy su"
-result = "win"
-score = 52560
-opponent_score = 29645
-seat = 0
-
-[[submissions.latest_public_episodes]]
-episode_id = 94693148
-opponent = "haruo_tensai"
-result = "win"
-score = 84212
-opponent_score = 77103
-seat = 1
-
-[[submissions.latest_public_episodes]]
-episode_id = 94694830
-opponent = "JASONSLIMWONG"
+episode_id = 95326461
+opponent = "Aleksei Churashev"
 result = "loss"
-score = 105780
-opponent_score = 125049
+score = 65390
+opponent_score = 104613
 seat = 1
 
 [[submissions.latest_public_episodes]]
-episode_id = 94696515
-opponent = "Leonid Zaporozhets"
-result = "win"
-score = 76004
-opponent_score = 68078
-seat = 0
-
-[[submissions.latest_public_episodes]]
-episode_id = 94698198
-opponent = "Lê Khang"
-result = "win"
-score = 71675
-opponent_score = 51745
-seat = 0
-
-[[submissions.latest_public_episodes]]
-episode_id = 94699879
-opponent = "HandsOffMyBigMelons"
+episode_id = 95287634
+opponent = "counter puncher"
 result = "loss"
-score = 95563
-opponent_score = 100878
+score = 69428
+opponent_score = 104663
 seat = 1
 
 [[submissions.latest_public_episodes]]
-episode_id = 94703343
-opponent = "SatoshiN04"
+episode_id = 95276498
+opponent = "Marcin Skalski"
 result = "win"
-score = 100560
-opponent_score = 93155
+score = 112181
+opponent_score = 89853
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 95269355
+opponent = "lulzx"
+result = "loss"
+score = 56293
+opponent_score = 84097
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 95214675
+opponent = "Athenix Kaggriculture"
+result = "loss"
+score = 86981
+opponent_score = 103803
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 95177974
+opponent = "Lissandra Kruse Fuganti"
+result = "win"
+score = 78979
+opponent_score = 78792
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 95173430
+opponent = "YWehbe"
+result = "loss"
+score = 81780
+opponent_score = 115264
 seat = 1
+
+[[submissions.latest_public_episodes]]
+episode_id = 95068636
+opponent = "LUCKY2"
+result = "loss"
+score = 91488
+opponent_score = 105836
+seat = 0
+
+[[submissions.latest_public_episodes]]
+episode_id = 95034456
+opponent = "Rohan Jain"
+result = "loss"
+score = 87769
+opponent_score = 96884
+seat = 0

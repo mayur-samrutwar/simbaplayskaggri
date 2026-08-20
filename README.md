@@ -4,11 +4,11 @@ A reproducible research project for building, testing, and preserving autonomous
 agents for Kaggle's **Kaggriculture** competition.
 
 The default local entry point, [`main.py`](main.py), currently runs the
-**unsubmitted resilient portfolio candidate**. The latest live Kaggle upload
+**unsubmitted throughput portfolio candidate**. The latest live Kaggle upload
 remains stable strawberry champion v3, submission `55631403`.
 
-> **Kaggle API snapshot (20 August 2026, 04:31 IST):** submission `55631403`
-> had a rating of **841.7** with a **19-15** public record over 34 rated games.
+> **Kaggle API snapshot (21 August 2026, 01:19 IST):** submission `55631403`
+> had a rating of **818.9** with a **24-26** public record over 50 rated games.
 > Ratings continue to move as Kaggle schedules matches. See the complete
 > [submission ledger](docs/SUBMISSIONS.md).
 
@@ -29,11 +29,11 @@ prioritize paired win rate over a few unusually large coin totals.
 
 ## Local promotion candidate
 
-The candidate in [`candidates/resilient_portfolio.py`](candidates/resilient_portfolio.py):
+The candidate in [`candidates/throughput_portfolio.py`](candidates/throughput_portfolio.py):
 
-- opens with 8 melon seeds, 7 wheat seeds, 1 goose, 2 cows, 2 sheep, and 9 hands;
+- opens with 8 melon seeds, 7 wheat seeds, 2 cows, 2 sheep, and 9 hands;
 - expands toward 75 tiles with demand-conditioned crops and livestock;
-- scales beyond an eight-animal engine only for animal-consuming shops;
+- scales by two animals per relevant shop, up to a 20-animal calendar cap;
 - adjusts wheat, strawberries, tomatoes, and carrots for town demand, feed
   needs, and visible opponent supply;
 - can increase to 10 or 11 hands when farm workload requires it;
@@ -41,10 +41,10 @@ The candidate in [`candidates/resilient_portfolio.py`](candidates/resilient_port
 - batches sales and liquidates remaining value before the episode ends; and
 - falls back to legal `PASS` actions in `main.py` if an unexpected live error occurs.
 
-This strategy is the current hypothesis, not a solved policy. It beat the live
-incumbent 28-4 in a 32-match paired local gate, but remained 0-20 against
-non-reactive top-leader replay traces. The complete evidence and its limits are
-recorded in the [34-match forensic and v7 promotion gate](docs/LIVE_SUBMISSION_55631403.md).
+This remains a hypothesis. Against 16 recent live traces it raised mean cash
+from 84,945 to 87,651 and mean margin from -10,084 to -1,472. It went 12-4
+against v7 locally, and improved the top-10 trace gate from 0-20/-36,213 to
+1-19/-30,014. No leaderboard score is guaranteed.
 
 ## Quick start
 
@@ -84,7 +84,7 @@ failure from the environment status:
 
 ```bash
 uv run python -m eval.tournament \
-  --candidate candidates/resilient_portfolio.py \
+  --candidate candidates/throughput_portfolio.py \
   --opponent starter \
   --seeds 0:8
 ```
@@ -129,11 +129,11 @@ records which strategy was actually uploaded.
 
 | Submission | Strategy | Rating snapshot | Public record | Role |
 |---:|---|---:|---:|---|
-| `55631403` | Stable strawberry champion v3 | **841.7** | **19-15-0** | Current rating leader |
-| `55625688` | Replay-derived adaptive hybrid v2 | **800.0** | **17-15-0** | Established baseline |
+| `55631403` | Stable strawberry champion v3 | **818.9** | **24-26-0** | Current rating leader |
+| `55625688` | Replay-derived adaptive hybrid v2 | **776.6** | **17-15-0** | Established baseline |
 | `55623462` | Diversified crop v1 | **662.2** | **13-12-0** | Historical fallback |
 
-These values came from the Kaggle API at 04:31 IST on 20 August 2026 and can
+These values came from the Kaggle API at 01:19 IST on 21 August 2026 and can
 change as Kaggle schedules more matches. Exact hashes, strategy descriptions,
 episode evidence, and rollback instructions are maintained in
 [`docs/SUBMISSIONS.md`](docs/SUBMISSIONS.md) and

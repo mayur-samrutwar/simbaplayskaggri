@@ -1,12 +1,12 @@
-"""Black-box Kaggle entry point for the promoted resilient portfolio.
+"""Black-box Kaggle entry point for the promoted throughput portfolio.
 
-The implementation lives in ``candidates.resilient_portfolio`` so experimental
+The implementation lives in ``candidates.throughput_portfolio`` so experimental
 policies can be benchmarked against this incumbent without duplicating code.
 Keep ``agent`` as the last callable defined in this file: kaggle-environments
 loads the last callable from a Python submission file.
 """
 
-from candidates.resilient_portfolio import agent as _promoted_agent
+from candidates.throughput_portfolio import agent as _promoted_agent
 
 
 def agent(obs):
