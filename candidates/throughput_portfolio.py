@@ -6,6 +6,7 @@ mechanics while changing only policies supported by the latest live losses:
 * geese are shop-gated instead of consuming opening cash by default; and
 * the herd scales by two animals per relevant shop, up to the proven calendar;
 * paid premium seeds receive urgent planting priority before they expire;
+* the first berry wave is purchased one day before planting begins;
 * up to six uncommitted tomato/carrot cells rotate into demanded berries;
 * up to three otherwise-idle cells become recurring feed wheat;
 * a twelfth worker is hired only for real backlog in a diverse town.
@@ -176,6 +177,16 @@ def _crop_targets(obs, farm, policy, animal_goals):
             "FARMERS_MARKET",
         )
     )
+    if day == 5:
+        # Market orders execute after field actions.  Buying this bounded wave
+        # on day 5 makes seeds available for day-6 planting instead of losing
+        # a full service day to procurement latency.
+        capacity = max(0, 25 * int(policy["land"]) - sum(animal_goals.values()))
+        targets["STRAWBERRY"] += min(
+            12,
+            max(0, capacity - sum(targets.values())),
+        )
+        return targets
     if not 6 <= day <= 13:
         return targets
 

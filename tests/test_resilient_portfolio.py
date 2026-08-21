@@ -469,6 +469,23 @@ def test_throughput_rotates_only_uncommitted_cells_into_demanded_berries():
     )
 
 
+def test_throughput_prepositions_bounded_berry_wave_on_day_five():
+    farm = _farm()
+    obs = _obs(day=5, shops=("PIZZA_SHOP",), farm=farm)
+    goals = throughput._animal_goals(obs)
+    baseline = resilient._crop_targets(obs, farm, throughput.POLICY, goals)
+    targets = throughput._crop_targets(obs, farm, throughput.POLICY, goals)
+
+    assert 0 < targets["STRAWBERRY"] <= 12
+    assert sum(targets.values()) <= 25 * throughput.POLICY["land"] - sum(goals.values())
+
+    earlier = copy.deepcopy(obs)
+    earlier.update(day=4, step=4 * 24)
+    assert throughput._crop_targets(earlier, farm, throughput.POLICY, goals) == (
+        resilient._crop_targets(earlier, farm, throughput.POLICY, goals)
+    )
+
+
 def test_throughput_fills_only_three_idle_cells_with_wheat():
     farm = _farm()
     obs = _obs(day=8, shops=(), farm=farm)

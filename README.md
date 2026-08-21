@@ -4,7 +4,7 @@ A reproducible research project for building, testing, and preserving autonomous
 agents for Kaggle's **Kaggriculture** competition.
 
 The default local entry point, [`main.py`](main.py), currently runs the
-**unsubmitted v10 throughput refinement**. Latest live upload is throughput v8,
+**unsubmitted v11 timing refinement**. Latest live upload is throughput v8,
 submission `55654212`.
 
 > **Kaggle API snapshot (21 August 2026, 13:51 IST):** submission `55654212`
@@ -34,6 +34,7 @@ The candidate in [`candidates/throughput_portfolio.py`](candidates/throughput_po
 - opens with 8 melon seeds, 7 wheat seeds, 2 cows, 2 sheep, and 9 hands;
 - expands toward 75 tiles with demand-conditioned crops and livestock;
 - scales by two animals per relevant shop, up to a 20-animal calendar cap;
+- prepositions the first bounded strawberry seed wave on day 5;
 - rotates up to six uncommitted tomato/carrot cells into demanded strawberries;
 - fills at most three otherwise-idle cells with recurring feed wheat;
 - adjusts wheat, strawberries, tomatoes, and carrots for town demand, feed
@@ -43,12 +44,12 @@ The candidate in [`candidates/throughput_portfolio.py`](candidates/throughput_po
 - batches sales and liquidates remaining value before the episode ends; and
 - falls back to legal `PASS` actions in `main.py` if an unexpected live error occurs.
 
-This remains a hypothesis. Across all 37 v8 live traces, isolated v9 and v10
-both went 25-12; v10 raised mean cash by 250 and margin by 422. Against 20
-top-player traces it retained 2-18 while improving cash by 518 and margin by
-489. It beat isolated v9 **32-16-8** across 56 fixed-shop games at +1,384 mean
-margin. A 32-match randomized head-to-head was nearly neutral at -37 mean
-margin, with zero errors or terminal stock. No score is guaranteed.
+This remains a hypothesis. On disjoint 18/19-game slices of all 37 v8 live
+traces, v11 went **15-3** and **16-3**: **31-6 (83.8%)** combined, versus
+v10's 25-12. It beat v10 **20-12** on 32 untouched random seeds and **33-23**
+across 56 fixed-shop games, with zero errors or terminal stock. The hard
+top-player trace gate remains only 2-18, although mean margin improved by
+1,528. No live score is guaranteed.
 
 ## Quick start
 

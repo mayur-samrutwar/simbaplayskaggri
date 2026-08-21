@@ -91,8 +91,8 @@ or liquidation failure occurred.
 - Crops: v7 feed-safe residual allocation with urgent premium planting.
 - Result: 22-16, 843.7 current rating, 845.6 observed peak.
 - Current local refinement: rotates at most six uncommitted crop cells toward
-  demanded strawberries, fills at most three idle cells with wheat, and hires
-  hand 12 only for backlog in diverse towns.
+  demanded strawberries, prepositions the first berry wave on day 5, fills at
+  most three idle cells with wheat, and hires hand 12 only for measured backlog.
 
 ## Exact rollback artifacts
 
