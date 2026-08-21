@@ -447,6 +447,43 @@ def test_throughput_prioritizes_paid_premium_seed_near_deadline():
     assert set(berry_priorities) == {-1}
 
 
+def test_throughput_rotates_only_uncommitted_cells_into_demanded_berries():
+    farm = _farm()
+    obs = _obs(
+        day=8,
+        shops=("SMOOTHIE_SHOP", "BRUNCH_SPOT", "PIZZA_SHOP", "FARMERS_MARKET"),
+        farm=farm,
+    )
+    goals = throughput._animal_goals(obs)
+    baseline = resilient._crop_targets(obs, farm, throughput.POLICY, goals)
+    targets = throughput._crop_targets(obs, farm, throughput.POLICY, goals)
+
+    assert 0 < targets["STRAWBERRY"] - baseline["STRAWBERRY"] <= 6
+    assert targets["WHEAT"] == baseline["WHEAT"]
+    assert sum(targets.values()) == sum(baseline.values())
+
+    late = copy.deepcopy(obs)
+    late.update(day=14, step=14 * 24)
+    assert throughput._crop_targets(late, farm, throughput.POLICY, goals) == (
+        resilient._crop_targets(late, farm, throughput.POLICY, goals)
+    )
+
+
+def test_throughput_twelfth_hand_requires_backlog_and_town_diversity():
+    farm = _farm()
+    for x in range(4):
+        farm["tiles"][0][x] = _plant("STRAWBERRY", missed=1)
+
+    diverse = _obs(
+        farm=farm,
+        shops=("SMOOTHIE_SHOP", "PIZZA_SHOP", "YARN_STORE"),
+    )
+    repeated = _obs(farm=farm, shops=("SMOOTHIE_SHOP",) * 3)
+
+    assert throughput._desired_hands(diverse, farm) == 12
+    assert throughput._desired_hands(repeated, farm) == 11
+
+
 def test_throughput_full_season_finishes_without_inventory():
     env = make(
         "kaggriculture",

@@ -2,8 +2,8 @@ schema_version = 1
 competition = "kaggriculture"
 team = "astro"
 record_scope = "Public rated episodes only; validation and self-play are excluded."
-last_live_check = "2026-08-20T19:49:34+00:00"
-current_rating_leader = 55631403
+last_live_check = "2026-08-21T08:21:31.694417+00:00"
+current_rating_leader = 55654212
 established_baseline = 55625688
 
 [[submissions]]
@@ -15,7 +15,7 @@ status = "COMPLETE"
 role = "historical-fallback"
 current_rating = 662.2
 peak_observed_rating = 662.2
-rating_rank = 3
+rating_rank = 4
 rated_matches = 25
 wins = 13
 losses = 12
@@ -74,9 +74,9 @@ submission_message = "Replay-derived adaptive hybrid v2"
 submitted_at = "2026-08-19T14:39:47.523000+00:00"
 status = "COMPLETE"
 role = "established-baseline"
-current_rating = 776.6
+current_rating = 767.7
 peak_observed_rating = 800.0
-rating_rank = 2
+rating_rank = 3
 rated_matches = 32
 wins = 17
 losses = 15
@@ -147,16 +147,24 @@ wins = 17
 losses = 15
 ties = 0
 
+[[submissions.observations]]
+observed_at = "2026-08-21T08:21:31.694417+00:00"
+rating = 767.7
+rated_matches = 32
+wins = 17
+losses = 15
+ties = 0
+
 [[submissions]]
 id = 55631403
 name = "stable-strawberry-champion-v3"
 submission_message = "Stable strawberry champion v3"
 submitted_at = "2026-08-19T20:31:05.303000+00:00"
 status = "COMPLETE"
-role = "current-rating-leader"
-current_rating = 818.9
+role = "historical-fallback"
+current_rating = 832.7
 peak_observed_rating = 975.0
-rating_rank = 1
+rating_rank = 2
 rated_matches = 50
 wins = 24
 losses = 26
@@ -191,7 +199,7 @@ strategy_details = [
   "Exact uploaded archive retained as a hash-verified rollback artifact; the current local entry point is a separate unsubmitted candidate.",
 ]
 known_weaknesses = [
-  "The 50-match record is negative and its rating fell from the user-reported 975.0 peak to 818.9.",
+  "The 50-match record is negative; its early user-reported 975.0 peak did not survive more games.",
   "Recent losses show stronger diversified farms outcompound it from day 18 onward.",
   "Large shared strawberry supply remains exposed to price competition.",
 ]
@@ -247,6 +255,14 @@ ties = 0
 [[submissions.observations]]
 observed_at = "2026-08-20T19:49:34+00:00"
 rating = 818.9
+rated_matches = 50
+wins = 24
+losses = 26
+ties = 0
+
+[[submissions.observations]]
+observed_at = "2026-08-21T08:21:31.694417+00:00"
+rating = 832.7
 rated_matches = 50
 wins = 24
 losses = 26
@@ -331,3 +347,72 @@ result = "loss"
 score = 87769
 opponent_score = 96884
 seat = 0
+
+[[submissions]]
+id = 55654212
+name = "replay-audited-throughput-v8"
+submission_message = "Replay-audited throughput portfolio v8"
+submitted_at = "2026-08-20T20:49:49.300000+00:00"
+status = "COMPLETE"
+role = "current-rating-leader"
+current_rating = 843.7
+peak_observed_rating = 845.6
+rating_rank = 1
+rated_matches = 38
+wins = 22
+losses = 16
+ties = 0
+win_rate = 0.5789473684210527
+artifact_path = "submissions/artifacts/55654212-upload.tar.gz"
+artifact_sha256 = "7b406c20628f00319f8f8cdfc2a4c00b4240240779f6d537409cc5b5e7a76192"
+artifact_bytes = 18167
+rollback_fidelity = "byte-exact-kaggle-upload"
+entrypoint = "candidates.throughput_portfolio:agent"
+bundle_files = [
+  "main.py",
+  "candidates/__init__.py",
+  "candidates/live_archetypes.py",
+  "candidates/resilient_portfolio.py",
+  "candidates/throughput_portfolio.py",
+]
+strategy_summary = """
+Replay-audited hybrid. It opens with 8 melons, 7 wheat, 2 cows, 2 sheep, and
+9 hands. It gates geese on egg demand, scales herd capacity by two animals per
+relevant shop up to 20, keeps v7 crop routing, and protects premium planting,
+storage, and liquidation.
+"""
+strategy_details = [
+  "Opening animals: 0 geese, 2 cows, 2 sheep; opening crops: 8 melons and 7 wheat.",
+  "Herd scales toward 20 using town demand, price, and conservative rival-supply credit.",
+  "Uses demand-conditioned wheat, strawberry, tomato, and carrot sleeves on 75 tiles.",
+  "Exact uploaded archive retained for rollback; local source now contains an unsubmitted refinement.",
+]
+known_weaknesses = [
+  "Losses averaged 96,232 against 105,271; stronger opponents concentrated about 34 strawberry cells versus 21.",
+  "Losses trailed mainly in late strawberry, melon, and wheat revenue.",
+  "The 845.6 peak remains far below leaderboard level and is not evidence of a solved policy.",
+]
+
+[[submissions.observations]]
+observed_at = "immediately after validation"
+rating = 600.0
+rated_matches = 0
+wins = 0
+losses = 0
+ties = 0
+
+[[submissions.observations]]
+observed_at = "2026-08-20T22:43:08.873562+00:00"
+rating = 845.6
+rated_matches = 28
+wins = 17
+losses = 11
+ties = 0
+
+[[submissions.observations]]
+observed_at = "2026-08-21T08:21:31.694417+00:00"
+rating = 843.7
+rated_matches = 38
+wins = 22
+losses = 16
+ties = 0

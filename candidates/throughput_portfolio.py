@@ -1,11 +1,13 @@
-"""High-throughput successor to :mod:`resilient_portfolio`.
+"""Replay-refined high-throughput portfolio.
 
 This candidate keeps v7's replay-tested routing, storage, ROI, and liquidation
 mechanics while changing only policies supported by the latest live losses:
 
 * geese are shop-gated instead of consuming opening cash by default; and
 * the herd scales by two animals per relevant shop, up to the proven calendar;
-* paid premium seeds receive urgent planting priority before they expire.
+* paid premium seeds receive urgent planting priority before they expire;
+* up to six uncommitted tomato/carrot cells rotate into demanded berries; and
+* a twelfth worker is hired only for real backlog in a diverse town.
 
 The scheduler is cloned into a private namespace, so benchmarking this module
 beside v7 cannot mutate either agent's globals.
@@ -159,10 +161,56 @@ def _animal_goals(obs, policy=POLICY):
 
 
 def _crop_targets(obs, farm, policy, animal_goals):
-    return v7._crop_targets(obs, farm, policy, animal_goals)
+    """Shift a small uncommitted sleeve toward berries before seed cutoff."""
+
+    targets = collections.Counter(v7._crop_targets(obs, farm, policy, animal_goals))
+    day = int(obs.get("day", 0))
+    shops = live._shop_counts(obs)
+    berry_shops = sum(
+        shops[name]
+        for name in (
+            "BRUNCH_SPOT",
+            "ICE_CREAM_SHOP",
+            "SMOOTHIE_SHOP",
+            "FARMERS_MARKET",
+        )
+    )
+    if not 6 <= day <= 13 or berry_shops < 2:
+        return targets
+
+    active = live._crop_counts(farm)
+    seeds = collections.Counter((obs.get("private", {}) or {}).get("seeds", {}) or {})
+    berry_goal = min(34, 24 + 2 * berry_shops)
+    extra = min(6, max(0, berry_goal - int(targets["STRAWBERRY"])))
+    for donor in ("CARROT", "TOMATO"):
+        committed = int(active[donor]) + int(seeds[donor])
+        available = max(0, int(targets[donor]) - committed)
+        moved = min(extra, available)
+        targets[donor] -= moved
+        targets["STRAWBERRY"] += moved
+        extra -= moved
+        if extra <= 0:
+            break
+    return targets
 
 
 def _desired_hands(obs, farm):
+    urgent = 0
+    for _pos, tile in live._plant_tiles(farm):
+        urgent += int(
+            not tile.get("watered_today", False)
+            and int(tile.get("consecutive_unwatered", 0)) >= 1
+        )
+    for _pos, tile in live._animal_tiles(farm):
+        urgent += int(
+            not tile.get("fed_today", False)
+            and int(tile.get("consecutive_unfed", 0)) >= 1
+        )
+    distinct_shops = len(
+        set((obs.get("town", {}) or {}).get("unlocked_shops", []) or [])
+    )
+    if urgent >= 4 and distinct_shops >= 3:
+        return 12
     return v7._desired_hands(obs, farm)
 
 

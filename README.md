@@ -4,11 +4,11 @@ A reproducible research project for building, testing, and preserving autonomous
 agents for Kaggle's **Kaggriculture** competition.
 
 The default local entry point, [`main.py`](main.py), currently runs the
-**unsubmitted throughput portfolio candidate**. The latest live Kaggle upload
-remains stable strawberry champion v3, submission `55631403`.
+**unsubmitted v9 throughput refinement**. Latest live upload is throughput v8,
+submission `55654212`.
 
-> **Kaggle API snapshot (21 August 2026, 01:19 IST):** submission `55631403`
-> had a rating of **818.9** with a **24-26** public record over 50 rated games.
+> **Kaggle API snapshot (21 August 2026, 13:51 IST):** submission `55654212`
+> had a rating of **843.7** with a **22-16** public record over 38 rated games.
 > Ratings continue to move as Kaggle schedules matches. See the complete
 > [submission ledger](docs/SUBMISSIONS.md).
 
@@ -34,17 +34,18 @@ The candidate in [`candidates/throughput_portfolio.py`](candidates/throughput_po
 - opens with 8 melon seeds, 7 wheat seeds, 2 cows, 2 sheep, and 9 hands;
 - expands toward 75 tiles with demand-conditioned crops and livestock;
 - scales by two animals per relevant shop, up to a 20-animal calendar cap;
+- rotates up to six uncommitted tomato/carrot cells into demanded strawberries;
 - adjusts wheat, strawberries, tomatoes, and carrots for town demand, feed
   needs, and visible opponent supply;
-- can increase to 10 or 11 hands when farm workload requires it;
+- hires a twelfth hand only for real backlog in a diverse town;
 - preserves placed animals and productive crops as its targets change;
 - batches sales and liquidates remaining value before the episode ends; and
 - falls back to legal `PASS` actions in `main.py` if an unexpected live error occurs.
 
-This remains a hypothesis. Against 16 recent live traces it raised mean cash
-from 84,945 to 87,651 and mean margin from -10,084 to -1,472. It went 12-4
-against v7 locally, and improved the top-10 trace gate from 0-20/-36,213 to
-1-19/-30,014. No leaderboard score is guaranteed.
+This remains a hypothesis. Across all 37 v8 live traces, v9 changed the replay
+gate from 21-16 to 27-10, raised own cash by 1,890, and raised margin by 3,461.
+It went 20-12 against frozen v8, 30-10-16 across fixed shops, and improved the
+top-10 trace gate from 1-19/-30,014 to 2-18/-27,684. No score is guaranteed.
 
 ## Quick start
 
@@ -129,11 +130,12 @@ records which strategy was actually uploaded.
 
 | Submission | Strategy | Rating snapshot | Public record | Role |
 |---:|---|---:|---:|---|
-| `55631403` | Stable strawberry champion v3 | **818.9** | **24-26-0** | Current rating leader |
-| `55625688` | Replay-derived adaptive hybrid v2 | **776.6** | **17-15-0** | Established baseline |
+| `55654212` | Replay-audited throughput v8 | **843.7** | **22-16-0** | Current rating leader |
+| `55631403` | Stable strawberry champion v3 | **832.7** | **24-26-0** | Historical fallback |
+| `55625688` | Replay-derived adaptive hybrid v2 | **767.7** | **17-15-0** | Established baseline |
 | `55623462` | Diversified crop v1 | **662.2** | **13-12-0** | Historical fallback |
 
-These values came from the Kaggle API at 01:19 IST on 21 August 2026 and can
+These values came from the Kaggle API at 13:51 IST on 21 August 2026 and can
 change as Kaggle schedules more matches. Exact hashes, strategy descriptions,
 episode evidence, and rollback instructions are maintained in
 [`docs/SUBMISSIONS.md`](docs/SUBMISSIONS.md) and

@@ -5,47 +5,30 @@ source of truth is [`submissions/registry.toml`](../submissions/registry.toml),
 and every artifact below is the **exact file downloaded from the corresponding
 Kaggle submission**, not a later reconstruction.
 
-Last live check: **2026-08-21 01:19 IST**. Ratings are matchmaking ratings and
+Last live check: **2026-08-21 13:51 IST**. Ratings are matchmaking ratings and
 can change whenever another public episode completes.
 
 ## Current ranking
 
 | Rank | Submission | Strategy | Current rating | Public record | Win rate | Role |
 |---:|---:|---|---:|---:|---:|---|
-| 1 | `55631403` | Stable strawberry champion v3 | **818.9** | **24-26-0** | 48.0% | Current rating leader |
-| 2 | `55625688` | Replay-derived adaptive hybrid v2 | **776.6** | **17-15-0** | 53.1% | Established baseline |
-| 3 | `55623462` | Diversified crop v1 | **662.2** | **13-12-0** | 52.0% | Historical fallback |
+| 1 | `55654212` | Replay-audited throughput v8 | **843.7** | **22-16-0** | 57.9% | Current rating leader |
+| 2 | `55631403` | Stable strawberry champion v3 | **832.7** | **24-26-0** | 48.0% | Historical fallback |
+| 3 | `55625688` | Replay-derived adaptive hybrid v2 | **767.7** | **17-15-0** | 53.1% | Established baseline |
+| 4 | `55623462` | Diversified crop v1 | **662.2** | **13-12-0** | 52.0% | Historical fallback |
 
-The latest bot began at 600, rose through 711.9 and 819.2, dipped to 816.3
-after its first loss, reached 911.3 in an API snapshot, and later reached a
-user-observed peak of 975.0. Kaggle's API does not expose historical peaks, so
-the ledger labels that value by provenance. After 50 rated games the bot is at
-818.9 with a 24-26 record. Submission `55625688` remains the exact rollback
-baseline, currently rated 776.6 after 32 games.
+V8 peaked at 845.6 and currently leads retained bots at 843.7. V3's 911.3 API
+snapshot and user-reported 975 peak occurred after only five early matches; its
+mature record is 24-26 and current rating is 832.7. Those peaks were sampling
+noise, not stronger mature performance.
 
 ## Latest submission episode audit
 
-Validation episode `94647666` is excluded. The API returned 50 rated episodes:
-24 wins and 26 losses. The ten most recent are:
-
-| Episode | Opponent | Result | Astro | Opponent |
-|---:|---|---:|---:|---:|
-| `95390646` | なーでぃー牧場 | Win | 60,032 | 59,462 |
-| `95326461` | Aleksei Churashev | Loss | 65,390 | 104,613 |
-| `95287634` | counter puncher | Loss | 69,428 | 104,663 |
-| `95276498` | Marcin Skalski | Win | 112,181 | 89,853 |
-| `95269355` | lulzx | Loss | 56,293 | 84,097 |
-| `95214675` | Athenix Kaggriculture | Loss | 86,981 | 103,803 |
-| `95177974` | Lissandra Kruse Fuganti | Win | 78,979 | 78,792 |
-| `95173430` | YWehbe | Loss | 81,780 | 115,264 |
-| `95068636` | LUCKY2 | Loss | 91,488 | 105,836 |
-| `95034456` | Rohan Jain | Loss | 87,769 | 96,884 |
-
-The latest 16-game slice went 5-11. Losses averaged 71,862 coins against
-103,328. The decisive gap emerged after day 18: winners fielded roughly
-12-15 animals, used 12-14 hands, and compounded animal, fertilizer, repeat
-melon, and late wheat revenue. Our bot averaged 25.97% passing and remained
-economically conservative; it did not crash or fail liquidation.
+Thirty-seven downloaded v8 games went 21-16. V8 averaged 96,782 coins, versus
+82,642 for v3's mature sample. V8 losses averaged 96,232 against 105,271: herd
+and fertilizer gaps were largely fixed, but opponents averaged 33.8 maximum
+strawberries versus 20.5 and earned 9,687 more late productive cash. No crash
+or liquidation failure occurred.
 
 ## Strategy reconstruction record
 
@@ -99,6 +82,17 @@ economically conservative; it did not crash or fail liquidation.
   and herd ceilings leave it exposed to diversified late compounding and
   shared strawberry-price competition.
 
+### 55654212 — replay-audited throughput v8
+
+- Exact artifact: [`55654212-upload.tar.gz`](../submissions/artifacts/55654212-upload.tar.gz)
+- Entrypoint: `candidates.throughput_portfolio:agent`
+- Opening: 2 cows, 2 sheep, 8 melon seeds, 7 wheat seeds, and 9 hands.
+- Scaling: relevant shops add two herd slots up to 20; geese require egg demand.
+- Crops: v7 feed-safe residual allocation with urgent premium planting.
+- Result: 22-16, 843.7 current rating, 845.6 observed peak.
+- Current local refinement: rotates at most six uncommitted crop cells toward
+  demanded strawberries and hires hand 12 only for backlog in diverse towns.
+
 ## Exact rollback artifacts
 
 | Submission | Archive SHA-256 |
@@ -106,6 +100,7 @@ economically conservative; it did not crash or fail liquidation.
 | `55623462` | `1d1d6391a0829f9cde6fd451eef9e00ca88ae84ff65352497784bad59a453853` |
 | `55625688` | `d10032fa250a1e980f04dd4d711cf7ae724c1138d8f3a1761bda357529d156a2` |
 | `55631403` | `ce0711105c1918c3f5d17312dad34105b4acb954bb542660cf38bb6fb7081695` |
+| `55654212` | `7b406c20628f00319f8f8cdfc2a4c00b4240240779f6d537409cc5b5e7a76192` |
 
 Run the registry test before using any artifact:
 

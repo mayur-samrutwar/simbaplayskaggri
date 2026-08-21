@@ -27,11 +27,16 @@ def _sha256(path):
 def test_registry_scores_records_and_ranks_are_consistent():
     registry = _registry()
     submissions = registry["submissions"]
-    assert [row["id"] for row in submissions] == [55623462, 55625688, 55631403]
+    assert [row["id"] for row in submissions] == [
+        55623462,
+        55625688,
+        55631403,
+        55654212,
+    ]
     assert len({row["id"] for row in submissions}) == len(submissions)
 
     ranked = sorted(submissions, key=lambda row: row["current_rating"], reverse=True)
-    assert [row["rating_rank"] for row in ranked] == [1, 2, 3]
+    assert [row["rating_rank"] for row in ranked] == [1, 2, 3, 4]
     assert registry["current_rating_leader"] == ranked[0]["id"]
     assert registry["established_baseline"] == 55625688
 
@@ -72,7 +77,9 @@ def test_exact_rollback_archives_are_hash_verified_and_safe():
                     assert all(marker not in content for marker in forbidden_content)
 
 
-@pytest.mark.parametrize("submission_id", [55623462, 55625688, 55631403])
+@pytest.mark.parametrize(
+    "submission_id", [55623462, 55625688, 55631403, 55654212]
+)
 def test_each_exact_archive_loads_outside_the_workspace(tmp_path, submission_id):
     row = next(item for item in _registry()["submissions"] if item["id"] == submission_id)
     extract_dir = tmp_path / str(submission_id)
