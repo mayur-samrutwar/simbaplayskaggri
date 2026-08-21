@@ -89,11 +89,12 @@ def run_suite(
     candidate: Path,
     cases: list[tuple[str, str, Path]],
     target_names: dict[str, str],
+    save_replay_dir: Path | None = None,
 ) -> dict:
     rows = []
     grouped: dict[str, list[TraceResult]] = defaultdict(list)
     for submission_id, replacement_team, replay_path in cases:
-        result = run_trace(candidate, replay_path, replacement_team)
+        result = run_trace(candidate, replay_path, replacement_team, save_replay_dir)
         grouped[submission_id].append(result)
         rows.append(
             asdict(result)
@@ -126,6 +127,7 @@ def main() -> int:
     parser.add_argument("--submission", action="append", default=[])
     parser.add_argument("--limit-per-team", type=int)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--save-replays", type=Path)
     args = parser.parse_args()
 
     analysis = json.loads(args.analysis.read_text())
@@ -141,7 +143,7 @@ def main() -> int:
     )
     if not cases:
         raise SystemExit("no leaderboard trace cases selected")
-    payload = run_suite(args.candidate, cases, target_names)
+    payload = run_suite(args.candidate, cases, target_names, args.save_replays)
     rendered = json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
     print(rendered, end="")
     if args.output:

@@ -6,7 +6,8 @@ mechanics while changing only policies supported by the latest live losses:
 * geese are shop-gated instead of consuming opening cash by default; and
 * the herd scales by two animals per relevant shop, up to the proven calendar;
 * paid premium seeds receive urgent planting priority before they expire;
-* up to six uncommitted tomato/carrot cells rotate into demanded berries; and
+* up to six uncommitted tomato/carrot cells rotate into demanded berries;
+* up to three otherwise-idle cells become recurring feed wheat;
 * a twelfth worker is hired only for real backlog in a diverse town.
 
 The scheduler is cloned into a private namespace, so benchmarking this module
@@ -161,7 +162,7 @@ def _animal_goals(obs, policy=POLICY):
 
 
 def _crop_targets(obs, farm, policy, animal_goals):
-    """Shift a small uncommitted sleeve toward berries before seed cutoff."""
+    """Concentrate a bounded sleeve and reclaim a little idle capacity."""
 
     targets = collections.Counter(v7._crop_targets(obs, farm, policy, animal_goals))
     day = int(obs.get("day", 0))
@@ -175,13 +176,16 @@ def _crop_targets(obs, farm, policy, animal_goals):
             "FARMERS_MARKET",
         )
     )
-    if not 6 <= day <= 13 or berry_shops < 2:
+    if not 6 <= day <= 13:
         return targets
 
     active = live._crop_counts(farm)
     seeds = collections.Counter((obs.get("private", {}) or {}).get("seeds", {}) or {})
-    berry_goal = min(34, 24 + 2 * berry_shops)
-    extra = min(6, max(0, berry_goal - int(targets["STRAWBERRY"])))
+    if berry_shops >= 2:
+        berry_goal = min(34, 24 + 2 * berry_shops)
+        extra = min(6, max(0, berry_goal - int(targets["STRAWBERRY"])))
+    else:
+        extra = 0
     for donor in ("CARROT", "TOMATO"):
         committed = int(active[donor]) + int(seeds[donor])
         available = max(0, int(targets[donor]) - committed)
@@ -191,6 +195,14 @@ def _crop_targets(obs, farm, policy, animal_goals):
         extra -= moved
         if extra <= 0:
             break
+
+    capacity = max(0, 25 * int(policy["land"]) - sum(animal_goals.values()))
+    idle = (
+        min(3, max(0, capacity - sum(targets.values())))
+        if shops["PET_CAFE"] < 2
+        else 0
+    )
+    targets["WHEAT"] += idle
     return targets
 
 

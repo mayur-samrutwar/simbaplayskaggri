@@ -469,6 +469,26 @@ def test_throughput_rotates_only_uncommitted_cells_into_demanded_berries():
     )
 
 
+def test_throughput_fills_only_three_idle_cells_with_wheat():
+    farm = _farm()
+    obs = _obs(day=8, shops=(), farm=farm)
+    goals = throughput._animal_goals(obs)
+    baseline = resilient._crop_targets(obs, farm, throughput.POLICY, goals)
+    targets = throughput._crop_targets(obs, farm, throughput.POLICY, goals)
+
+    assert targets["WHEAT"] - baseline["WHEAT"] == 3
+    assert targets["STRAWBERRY"] == baseline["STRAWBERRY"]
+    assert sum(targets.values()) - sum(baseline.values()) == 3
+
+    carrot_obs = _obs(day=8, shops=("PET_CAFE", "PET_CAFE"), farm=farm)
+    carrot_goals = throughput._animal_goals(carrot_obs)
+    assert throughput._crop_targets(
+        carrot_obs, farm, throughput.POLICY, carrot_goals
+    ) == resilient._crop_targets(
+        carrot_obs, farm, throughput.POLICY, carrot_goals
+    )
+
+
 def test_throughput_twelfth_hand_requires_backlog_and_town_diversity():
     farm = _farm()
     for x in range(4):

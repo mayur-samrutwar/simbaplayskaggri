@@ -243,6 +243,11 @@ def replay_episode(path: Path) -> dict[str, Any]:
     config = dict(replay["configuration"])
     config["seed"] = int(replay["info"]["seed"])
     env = make("kaggriculture", configuration=config, debug=True)
+    final_public = replay["steps"][-1][0].get("observation", {}) or {}
+    shop_sequence = list(
+        (final_public.get("town", {}) or {}).get("unlocked_shops", []) or []
+    )
+    unlock_interval = max(1, int(config.get("townShopUnlockInterval", 3)))
     hooks = Hooks()
     hooks.install()
 
@@ -276,6 +281,10 @@ def replay_episode(path: Path) -> dict[str, Any]:
                     hooks.unit_requests[player][op] += 1
             env.step(actions)
             obs = env.state[0].observation
+            # Generated counterfactual traces preserve the original public town
+            # even when replacement farm occupancy changes the environment RNG.
+            unlocked = min(len(shop_sequence), int(obs.day) // unlock_interval)
+            obs.town["unlocked_shops"] = list(shop_sequence[:unlocked])
             for player, farm in enumerate(obs.farms):
                 crops, animals, weeds = _tile_counts(farm)
                 for crop, count in crops.items():

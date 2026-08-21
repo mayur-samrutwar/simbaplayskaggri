@@ -4,7 +4,7 @@ A reproducible research project for building, testing, and preserving autonomous
 agents for Kaggle's **Kaggriculture** competition.
 
 The default local entry point, [`main.py`](main.py), currently runs the
-**unsubmitted v9 throughput refinement**. Latest live upload is throughput v8,
+**unsubmitted v10 throughput refinement**. Latest live upload is throughput v8,
 submission `55654212`.
 
 > **Kaggle API snapshot (21 August 2026, 13:51 IST):** submission `55654212`
@@ -35,6 +35,7 @@ The candidate in [`candidates/throughput_portfolio.py`](candidates/throughput_po
 - expands toward 75 tiles with demand-conditioned crops and livestock;
 - scales by two animals per relevant shop, up to a 20-animal calendar cap;
 - rotates up to six uncommitted tomato/carrot cells into demanded strawberries;
+- fills at most three otherwise-idle cells with recurring feed wheat;
 - adjusts wheat, strawberries, tomatoes, and carrots for town demand, feed
   needs, and visible opponent supply;
 - hires a twelfth hand only for real backlog in a diverse town;
@@ -42,10 +43,12 @@ The candidate in [`candidates/throughput_portfolio.py`](candidates/throughput_po
 - batches sales and liquidates remaining value before the episode ends; and
 - falls back to legal `PASS` actions in `main.py` if an unexpected live error occurs.
 
-This remains a hypothesis. Across all 37 v8 live traces, v9 changed the replay
-gate from 21-16 to 27-10, raised own cash by 1,890, and raised margin by 3,461.
-It went 20-12 against frozen v8, 30-10-16 across fixed shops, and improved the
-top-10 trace gate from 1-19/-30,014 to 2-18/-27,684. No score is guaranteed.
+This remains a hypothesis. Across all 37 v8 live traces, isolated v9 and v10
+both went 25-12; v10 raised mean cash by 250 and margin by 422. Against 20
+top-player traces it retained 2-18 while improving cash by 518 and margin by
+489. It beat isolated v9 **32-16-8** across 56 fixed-shop games at +1,384 mean
+margin. A 32-match randomized head-to-head was nearly neutral at -37 mean
+margin, with zero errors or terminal stock. No score is guaranteed.
 
 ## Quick start
 
